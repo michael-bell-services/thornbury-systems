@@ -23,7 +23,7 @@ export function sum(items: Pence[]): Pence {
 }
 
 // Percentage of a pence amount, rounded half up to the nearest penny.
-// Used by the late payment charge. Nothing else uses it yet.
+// Used by the VAT calculation in invoices/calc.ts, and by the late payment charge.
 export function percentOf(p: Pence, percent: number): Pence {
   return Math.round((p * percent) / 100);
 }

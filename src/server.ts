@@ -54,7 +54,13 @@ export const server = createServer((req, res) => {
     const invoice = invoices.find((i) => i.id === parts[1]);
     if (!invoice) return json(res, 404, { error: 'no such invoice' });
     const totals = totalFor(invoice);
-    return json(res, 200, { ...invoice, ...totals, display: format(totals.total) });
+    return json(res, 200, {
+      ...invoice,
+      ...totals,
+      display: format(totals.total),
+      displayNet: format(totals.net),
+      displayVat: format(totals.vat),
+    });
   }
 
   if (parts[0] === 'work-orders') {
